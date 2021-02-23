@@ -7,15 +7,22 @@
 
 import UIKit
 
-class TasksController:UIViewController {
-    let array = ["1","2","3","4"]
+class TasksController:UIViewController, EditingTaskDelegate {
+    
+    private var tasks = [String]()
+    
+    
+    
+    
     //MARK: Initialization objects
-    var tasks:StorageTasks?
+    var storageDelegate:StorageTasksDelegate?
     // initialization tableView
     var tableView:UITableView =  {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = #colorLiteral(red: 0.1568627451, green: 0.1921568627, blue: 0.2274509804, alpha: 1)
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
@@ -23,22 +30,29 @@ class TasksController:UIViewController {
     //initialization topViewLogo
     let topViewLogo:TopViewLogo = {
         let mainView = TopViewLogo()
-        
         mainView.translatesAutoresizingMaskIntoConstraints = false
         return mainView
     }()
-   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.constrainsViews()
-        self.setupDelegateTableView()
-    }
     
-    fileprivate func setupDelegateTableView() {
+    fileprivate func setup() {
+        
+        let viewController = self
+        let storage = StorageTasks()
+        viewController.storageDelegate = storage
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setup()
+        self.constrainsViews()
+        guard let data = storageDelegate?.getTasksValue() else { return}
+        self.tasks = data
+    }
+    
+   
     
     // function that exposes the constraints
     fileprivate func constrainsViews () {
@@ -65,22 +79,38 @@ class TasksController:UIViewController {
 
 extension TasksController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
-        cell.taskBodyText.text = array[indexPath.row]
+        cell.delegate = self
+        cell.nameTask.text = tasks[indexPath.row]
         cell.backgroundColor = #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.tasks.remove(at: indexPath.row)
+            storageDelegate?.removeTask(indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+    }
+    
+    func presentEditingScreen(to cell: CustomCell) {
+        let editScreenVC = EditScreenController()
+        present(editScreenVC, animated: true)
     }
   
+    
 }
 
 

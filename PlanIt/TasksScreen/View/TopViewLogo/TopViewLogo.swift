@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: Fix image constraints
 
 class TopViewLogo:UIView {
     
@@ -49,8 +48,6 @@ class TopViewLogo:UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-       // self.backgroundColor = .red
         installationViewsToTopViewLogo()
     }
     

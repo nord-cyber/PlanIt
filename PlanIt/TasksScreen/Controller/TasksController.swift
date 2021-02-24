@@ -7,16 +7,14 @@
 
 import UIKit
 
-class TasksController:UIViewController, EditingTaskDelegate {
+class TasksController:UIViewController {
     
     private var tasks = [String]()
-    
-    
-    
-    
+
     //MARK: Initialization objects
     var storageDelegate:StorageTasksDelegate?
     // initialization tableView
+    
     var tableView:UITableView =  {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +32,13 @@ class TasksController:UIViewController, EditingTaskDelegate {
         return mainView
     }()
     
+    let bottomView:BottomView = {
+        let bottom = BottomView()
+        bottom.translatesAutoresizingMaskIntoConstraints = false
+        return bottom
+    }()
+    
+    
     fileprivate func setup() {
         
         let viewController = self
@@ -42,6 +47,7 @@ class TasksController:UIViewController, EditingTaskDelegate {
         
         tableView.delegate = self
         tableView.dataSource = self
+        bottomView.delegate = self
     }
    
     override func viewDidLoad() {
@@ -57,8 +63,8 @@ class TasksController:UIViewController, EditingTaskDelegate {
     // function that exposes the constraints
     fileprivate func constrainsViews () {
         // add to main view
-        self.view.addSubview(tableView)
-        self.view.addSubview(topViewLogo)
+        let views = [tableView,topViewLogo, bottomView]
+        views.forEach { view.addSubview($0)}
         
         // calculating ratio for correct proportion topViewLogo
         self.topViewLogo.frame.size = CGSize(width: self.view.frame.width, height: 240)
@@ -70,6 +76,10 @@ class TasksController:UIViewController, EditingTaskDelegate {
         // tableview constraints
         tableView.anchor(top: topViewLogo.bottomAnchor, trailing: view.trailingAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: -70, right: 0), size: CGSize(width: self.view.frame.width, height: 600))
   
+        
+        // bottomView constraint
+        
+        bottomView.anchor(top: tableView.bottomAnchor, trailing: view.trailingAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
     
     
@@ -105,12 +115,26 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func presentEditingScreen(to cell: CustomCell) {
-        let editScreenVC = EditScreenController()
-        present(editScreenVC, animated: true)
-    }
+    
   
     
+}
+
+extension TasksController:EditingTaskDelegate,AddNewTaskDelegate {
+    
+    func addNewTask() {
+        presentEditScreen()
+    }
+    
+    func presentEditingScreen(to cell: CustomCell) {
+      presentEditScreen()
+    }
+    
+    fileprivate func presentEditScreen() {
+        let editScreenVC:EditScreenController? = EditScreenController()
+        let navVC = UINavigationController(rootViewController: editScreenVC!)
+        present(navVC, animated: true)
+    }
 }
 
 

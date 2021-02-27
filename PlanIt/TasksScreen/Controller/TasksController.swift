@@ -7,14 +7,29 @@
 
 import UIKit
 
-class TasksController:UIViewController {
+class TasksController:UIViewController, PresentDataFieldsDelegate {
     
-    private var tasks = [String]()
+    func presentDataFields(_ data: DataFields) {
+        DispatchQueue.main.async {[unowned self] in
+            tasks.append(data)
+            storageDelegate?.saveTasks(tasks: tasks)
+            tableView.reloadData()
+        }
+    }
+    
+   
+    
+    let array:[DataFields] = [DataFields(titleTask: "2", descriptionTask: "ne"),DataFields(titleTask: "3", descriptionTask: "me"),
+    DataFields(titleTask: "3", descriptionTask: nil)]
+    
+    var presenterVariable:PresentData?
 
-    //MARK: Initialization objects
-    var storageDelegate:StorageTasksDelegate?
-    // initialization tableView
+    //MARK: Initialization View objects
     
+    var storageDelegate:StorageTasksDelegate?
+    var tasks = [DataFields]()
+    let topViewLogo = TopViewLogo()
+    let bottomView = BottomView()
     var tableView:UITableView =  {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,40 +40,31 @@ class TasksController:UIViewController {
         return tableView
     }()
     
-    //initialization topViewLogo
-    let topViewLogo:TopViewLogo = {
-        let mainView = TopViewLogo()
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        return mainView
-    }()
+  
     
-    let bottomView:BottomView = {
-        let bottom = BottomView()
-        bottom.translatesAutoresizingMaskIntoConstraints = false
-        return bottom
-    }()
-    
-    
+
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setup()
+        self.constrainsViews()
+        if let data = self.storageDelegate?.getTasksValue() {
+            self.tasks = data
+        }
+    }
+   
     fileprivate func setup() {
         
         let viewController = self
         let storage = StorageTasks()
         viewController.storageDelegate = storage
         
+        
         tableView.delegate = self
         tableView.dataSource = self
         bottomView.delegate = self
     }
-   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setup()
-        self.constrainsViews()
-        guard let data = storageDelegate?.getTasksValue() else { return}
-        self.tasks = data
-    }
-    
-   
+  
     
     // function that exposes the constraints
     fileprivate func constrainsViews () {
@@ -78,7 +84,6 @@ class TasksController:UIViewController {
   
         
         // bottomView constraint
-        
         bottomView.anchor(top: tableView.bottomAnchor, trailing: view.trailingAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
     
@@ -96,7 +101,7 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         cell.delegate = self
-        cell.nameTask.text = tasks[indexPath.row]
+        cell.nameTask.text = tasks[indexPath.row].titleTask
         cell.backgroundColor = #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
         return cell
     }
@@ -120,21 +125,22 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension TasksController:EditingTaskDelegate,AddNewTaskDelegate {
-    
-    func addNewTask() {
+extension TasksController:EditingTaskDelegate {
+    func presentEditingScreen(to cell: CustomCell?) {
         presentEditScreen()
     }
     
-    func presentEditingScreen(to cell: CustomCell) {
-      presentEditScreen()
-    }
     
     fileprivate func presentEditScreen() {
         let editScreenVC:EditScreenController? = EditScreenController()
+        editScreenVC?.taskVC = self
         let navVC = UINavigationController(rootViewController: editScreenVC!)
         present(navVC, animated: true)
     }
+    
+    
+  
+   
 }
 
 

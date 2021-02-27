@@ -7,19 +7,18 @@
 
 import UIKit
 
-protocol AddNewTaskDelegate: class {
-    func addNewTask()
-}
+
 
 class BottomView:UIView {
     
-    weak var delegate:AddNewTaskDelegate?
+    weak var delegate:EditingTaskDelegate?
     
     var addNewTaskButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "AddButton"), for: .normal)
         button.frame = .zero
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self.self, action: #selector(tapAddNewTask), for: .touchUpInside)
         return button
     }()
     
@@ -27,7 +26,7 @@ class BottomView:UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = #colorLiteral(red: 0.1568627451, green: 0.1921568627, blue: 0.2274509804, alpha: 1)
-        addNewTaskButton.addTarget(self, action: #selector(tapAddNewTask), for: .touchUpInside)
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
@@ -43,6 +42,6 @@ class BottomView:UIView {
     }
     
     @objc func tapAddNewTask() {
-        delegate?.addNewTask()
+        delegate?.presentEditingScreen(to: nil)
     }
 }

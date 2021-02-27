@@ -14,17 +14,17 @@
 		09189EFB25DAF6D000A84EAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09189EF925DAF6D000A84EAF /* LaunchScreen.storyboard */; };
 		09189F0F25DBCE4D00A84EAF /* TasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F0E25DBCE4D00A84EAF /* TasksController.swift */; };
 		09189F1725DBF30A00A84EAF /* StorageTasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F1625DBF30A00A84EAF /* StorageTasksModel.swift */; };
-		09189F1C25DC098E00A84EAF /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09189F1B25DC098E00A84EAF /* TableViewCell.xib */; };
 		09189F1F25DC0F5A00A84EAF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F1E25DC0F5A00A84EAF /* CustomCell.swift */; };
 		09189F2525DC24B100A84EAF /* TopViewLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F2425DC24B100A84EAF /* TopViewLogo.swift */; };
 		0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0960EE2225DDA58B00656093 /* AnchorExtension.swift */; };
-		09AA3BD225E4062D00B0E290 /* StorageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BD125E4062D00B0E290 /* StorageProtocols.swift */; };
-		09AA3BD525E4137700B0E290 /* ChangeText + Dismiss Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BD425E4137700B0E290 /* ChangeText + Dismiss Keyboard.swift */; };
+		09AA3BD225E4062D00B0E290 /* TaskProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */; };
 		09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */; };
 		09AA3BE925E52C4C00B0E290 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BE825E52C4C00B0E290 /* BottomView.swift */; };
 		09AA3BF425E68CD500B0E290 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BF325E68CD500B0E290 /* CustomTextField.swift */; };
-		09AA3BF725E691BD00B0E290 /* DataFeildsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BF625E691BD00B0E290 /* DataFeildsModel.swift */; };
+		09AA3BF725E691BD00B0E290 /* DataFieldsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BF625E691BD00B0E290 /* DataFieldsModel.swift */; };
 		09AA3BFA25E6922000B0E290 /* DescriptionTaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BF925E6922000B0E290 /* DescriptionTaskField.swift */; };
+		09AA3C2825EA5D2400B0E290 /* FieldsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3C2725EA5D2400B0E290 /* FieldsProtocols.swift */; };
+		09AA3C2E25EA96EB00B0E290 /* PresentDataMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3C2D25EA96EB00B0E290 /* PresentDataMode.swift */; };
 		09C5748E25E161CA0092CC26 /* CenterYTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5748D25E161CA0092CC26 /* CenterYTextViewExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,17 +38,17 @@
 		09189EFC25DAF6D000A84EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09189F0E25DBCE4D00A84EAF /* TasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksController.swift; sourceTree = "<group>"; };
 		09189F1625DBF30A00A84EAF /* StorageTasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTasksModel.swift; sourceTree = "<group>"; };
-		09189F1B25DC098E00A84EAF /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		09189F1E25DC0F5A00A84EAF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		09189F2425DC24B100A84EAF /* TopViewLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewLogo.swift; sourceTree = "<group>"; };
 		0960EE2225DDA58B00656093 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
-		09AA3BD125E4062D00B0E290 /* StorageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProtocols.swift; sourceTree = "<group>"; };
-		09AA3BD425E4137700B0E290 /* ChangeText + Dismiss Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChangeText + Dismiss Keyboard.swift"; sourceTree = "<group>"; };
+		09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProtocols.swift; sourceTree = "<group>"; };
 		09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenController.swift; sourceTree = "<group>"; };
 		09AA3BE825E52C4C00B0E290 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		09AA3BF325E68CD500B0E290 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		09AA3BF625E691BD00B0E290 /* DataFeildsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFeildsModel.swift; sourceTree = "<group>"; };
+		09AA3BF625E691BD00B0E290 /* DataFieldsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFieldsModel.swift; sourceTree = "<group>"; };
 		09AA3BF925E6922000B0E290 /* DescriptionTaskField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTaskField.swift; sourceTree = "<group>"; };
+		09AA3C2725EA5D2400B0E290 /* FieldsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldsProtocols.swift; sourceTree = "<group>"; };
+		09AA3C2D25EA96EB00B0E290 /* PresentDataMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDataMode.swift; sourceTree = "<group>"; };
 		09C5748D25E161CA0092CC26 /* CenterYTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterYTextViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,7 +183,6 @@
 		09189F2325DC248800A84EAF /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				09189F1B25DC098E00A84EAF /* TableViewCell.xib */,
 				09189F1E25DC0F5A00A84EAF /* CustomCell.swift */,
 			);
 			path = CustomCell;
@@ -194,7 +193,6 @@
 			children = (
 				0960EE2225DDA58B00656093 /* AnchorExtension.swift */,
 				09C5748D25E161CA0092CC26 /* CenterYTextViewExtension.swift */,
-				09AA3BD425E4137700B0E290 /* ChangeText + Dismiss Keyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -202,7 +200,7 @@
 		09AA3BD725E436E700B0E290 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				09AA3BD125E4062D00B0E290 /* StorageProtocols.swift */,
+				09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -210,6 +208,7 @@
 		09AA3BE025E4FF5F00B0E290 /* EditScreen */ = {
 			isa = PBXGroup;
 			children = (
+				09AA3C2525EA5CE400B0E290 /* Protocols */,
 				09AA3BE125E4FF8400B0E290 /* Model */,
 				09AA3BE225E4FF8A00B0E290 /* View */,
 				09AA3BE325E4FF9000B0E290 /* Cotroller */,
@@ -220,7 +219,8 @@
 		09AA3BE125E4FF8400B0E290 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				09AA3BF625E691BD00B0E290 /* DataFeildsModel.swift */,
+				09AA3BF625E691BD00B0E290 /* DataFieldsModel.swift */,
+				09AA3C2D25EA96EB00B0E290 /* PresentDataMode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,6 +248,14 @@
 				09AA3BE825E52C4C00B0E290 /* BottomView.swift */,
 			);
 			path = BottomView;
+			sourceTree = "<group>";
+		};
+		09AA3C2525EA5CE400B0E290 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				09AA3C2725EA5D2400B0E290 /* FieldsProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,7 +316,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09189EFB25DAF6D000A84EAF /* LaunchScreen.storyboard in Resources */,
-				09189F1C25DC098E00A84EAF /* TableViewCell.xib in Resources */,
 				09189EF825DAF6D000A84EAF /* Assets.xcassets in Resources */,
 				09189EF625DAF6CD00A84EAF /* Main.storyboard in Resources */,
 			);
@@ -321,21 +328,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09AA3C2E25EA96EB00B0E290 /* PresentDataMode.swift in Sources */,
 				09AA3BFA25E6922000B0E290 /* DescriptionTaskField.swift in Sources */,
 				09AA3BF425E68CD500B0E290 /* CustomTextField.swift in Sources */,
 				09C5748E25E161CA0092CC26 /* CenterYTextViewExtension.swift in Sources */,
 				0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */,
 				09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */,
 				09AA3BE925E52C4C00B0E290 /* BottomView.swift in Sources */,
-				09AA3BD525E4137700B0E290 /* ChangeText + Dismiss Keyboard.swift in Sources */,
-				09AA3BF725E691BD00B0E290 /* DataFeildsModel.swift in Sources */,
+				09AA3BF725E691BD00B0E290 /* DataFieldsModel.swift in Sources */,
 				09189F1725DBF30A00A84EAF /* StorageTasksModel.swift in Sources */,
 				09189F2525DC24B100A84EAF /* TopViewLogo.swift in Sources */,
 				09189F1F25DC0F5A00A84EAF /* CustomCell.swift in Sources */,
 				09189EEF25DAF6CD00A84EAF /* AppDelegate.swift in Sources */,
+				09AA3C2825EA5D2400B0E290 /* FieldsProtocols.swift in Sources */,
 				09189F0F25DBCE4D00A84EAF /* TasksController.swift in Sources */,
 				09189EF125DAF6CD00A84EAF /* SceneDelegate.swift in Sources */,
-				09AA3BD225E4062D00B0E290 /* StorageProtocols.swift in Sources */,
+				09AA3BD225E4062D00B0E290 /* TaskProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

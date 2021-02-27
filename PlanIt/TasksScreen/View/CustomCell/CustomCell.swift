@@ -43,7 +43,7 @@ class CustomCell:UITableViewCell, UITextViewDelegate {
         var body = UILabel()
         body.font = UIFont(name: "Courier", size: 17)
         body.backgroundColor = #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
-        body.textColor = .white
+        body.textColor = .lightGray
         body.frame = .zero
         body.isHidden = true
         body.translatesAutoresizingMaskIntoConstraints = false
@@ -103,11 +103,8 @@ class CustomCell:UITableViewCell, UITextViewDelegate {
         super.setSelected(selected, animated: true)
         
     }
-    
-    @objc func topDone(sender:Any) {
-        taskBodyText.endEditing(true)
-    }
-    
+
+    // trigger for edit button cell
     @objc func tapEditingButton() {
         delegate?.presentEditingScreen(to: self)
     }

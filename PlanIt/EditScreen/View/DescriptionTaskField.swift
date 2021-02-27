@@ -24,9 +24,6 @@ class DescriptionTaskField:UITextView {
         textColor = .white
     }
     
-    
-    
-    
     required init?(coder: NSCoder) {
        fatalError()
     }

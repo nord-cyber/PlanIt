@@ -9,7 +9,8 @@ import Foundation
 
 
 
-struct DataFields {
+struct DataFields:Codable {
     let titleTask:String
     let descriptionTask:String?
 }
+

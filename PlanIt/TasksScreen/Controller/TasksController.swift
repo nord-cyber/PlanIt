@@ -10,18 +10,15 @@ import UIKit
 class TasksController:UIViewController, PresentDataFieldsDelegate {
     
     func presentDataFields(_ data: DataFields) {
-        DispatchQueue.main.async {[unowned self] in
             tasks.append(data)
             storageDelegate?.saveTasks(tasks: tasks)
             tableView.reloadData()
-        }
     }
     
    
     
     let array:[DataFields] = [DataFields(titleTask: "2", descriptionTask: "ne"),DataFields(titleTask: "3", descriptionTask: "me"),
     DataFields(titleTask: "3", descriptionTask: nil)]
-    
     var presenterVariable:PresentData?
 
     //MARK: Initialization View objects
@@ -127,19 +124,21 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
 
 extension TasksController:EditingTaskDelegate {
     func presentEditingScreen(to cell: CustomCell?) {
-        presentEditScreen()
+        presentEditScreen(cell: cell)
+       
     }
     
     
-    fileprivate func presentEditScreen() {
+    fileprivate func presentEditScreen(cell:CustomCell?) {
         let editScreenVC:EditScreenController? = EditScreenController()
+        if let cell = cell {
+            editScreenVC?.editDataField(cell)
+        }
         editScreenVC?.taskVC = self
         let navVC = UINavigationController(rootViewController: editScreenVC!)
         present(navVC, animated: true)
     }
-    
-    
-  
+
    
 }
 

@@ -18,7 +18,7 @@ class DescriptionTaskField:UITextView {
         layer.cornerRadius = 20
         translatesAutoresizingMaskIntoConstraints = false
         text = "Description your task (optional)"
-        font = UIFont(name: "Courier", size: 14)
+        font = UIFont(name: "Courier", size: ConstantSizes.fontSizeDescription)
         alpha = 0.6
         textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 0)
         textColor = .white

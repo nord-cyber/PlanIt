@@ -5,7 +5,7 @@
 //  Created by Vadzim Ivanchanka on 22.02.21.
 //
 
-import Foundation
+import UIKit
 
 
 protocol StorageTasksDelegate: class {
@@ -18,6 +18,13 @@ protocol EditingTaskDelegate: class {
     func presentEditingScreen(to cell: CustomCell?)
 }
 
-protocol AddNewTaskDelegate: class {
-    func addNewTask()
+
+protocol  ShowDescription:class {
+    func showDescription(for cell:CustomCell?) -> CellSizes?
+}
+
+protocol ConstantsSizesProtocol{
+    static var paddingHeightViewsCell:UIEdgeInsets { get }
+    static var fontSizeDescription:CGFloat { get }
+    static var heightRow:CGFloat { get }
 }

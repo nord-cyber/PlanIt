@@ -66,7 +66,6 @@ class EditScreenController:UIViewController, UITextFieldDelegate, UITextViewDele
         dismiss(animated: true, completion: nil)
     }
      @objc fileprivate func tapSaveButton() {
-        
         //   должен ли он отвечать за изменине ячейки?
         if editCell != nil {
             editCell?.nameTask.text = titleTask.text!
@@ -101,14 +100,14 @@ class EditScreenController:UIViewController, UITextFieldDelegate, UITextViewDele
        textViewPlaceholderChecker()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
-        descriptionField.resignFirstResponder()
+        
     }
     
     fileprivate func textViewPlaceholderChecker() {
         let alphaPlaceholderDescriptionText = "0.6"
         let alpha = String(format: "%.1f", descriptionField.alpha)
         if alpha == alphaPlaceholderDescriptionText {
-            descriptionField.text = nil
+            descriptionField.text = ""
             descriptionField.alpha = 1
         }
     }

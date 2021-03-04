@@ -6,41 +6,51 @@
 //
 
 
-//MARK: FIX BAG WITH SAVE DATA. DESCRIPTION: WHEN REMOVE TASK FROM LIST METHOD removeTask DON'T REMOVE NECESSARY CELL
 
 import UIKit
 
 class StorageTasks:StorageTasksDelegate {
-
+    
+    // constants
     fileprivate let keyForUser = "keyTasks"
-    fileprivate var ud = UserDefaults()
+    fileprivate let ud = UserDefaults()
     
     
     // save tasks in UD
     func saveTasks(tasks:[DataFields]) {
-        DispatchQueue.main.async { [unowned self] in
+        if tasks.isEmpty {
+            self.ud.setValue(nil, forKey: keyForUser)
+            return
+        }
             guard let encoded = try? JSONEncoder().encode(tasks) else
             { print("Can't save task data")
                 return
             }
             self.ud.setValue(encoded, forKey: keyForUser)
-        }
+          
     }
     
     // get data tasks
     func getTasksValue() -> [DataFields]? {
-        
-            let decoder = JSONDecoder()
-            let data = ud.value(forKey: keyForUser) as! Data
-            let dataFields = try? decoder.decode([DataFields].self, from: data)
+         
+           let dataFields = decoder()
             return dataFields
     }
     
     // remove from tasks object
     func removeTask(_ indexPathRow: Int) {
-            if var getTasks = getTasksValue() {
-                getTasks.remove(at: indexPathRow)
-                self.saveTasks(tasks: getTasks)
-            }
+        
+        guard var data = decoder() else { return }
+        data.remove(at: indexPathRow)
+        DispatchQueue.main.async {[unowned self] in
+            saveTasks(tasks: data)
+        }
+      
+    }
+    
+    fileprivate func decoder() -> [DataFields]? {
+        guard let data =  self.ud.value(forKey: keyForUser) as? Data,
+              let dataField = try? JSONDecoder().decode([DataFields].self, from: data) else { return nil}
+        return dataField
     }
 }

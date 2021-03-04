@@ -7,23 +7,22 @@
 
 import UIKit
 
-class TasksController:UIViewController, PresentDataFieldsDelegate {
+class TasksController:UIViewController, PresentDataFieldsDelegate{
     
     func presentDataFields(_ data: DataFields) {
+        
             tasks.append(data)
             storageDelegate?.saveTasks(tasks: tasks)
             tableView.reloadData()
     }
     
    
-    
-    let array:[DataFields] = [DataFields(titleTask: "2", descriptionTask: "ne"),DataFields(titleTask: "3", descriptionTask: "me"),
-    DataFields(titleTask: "3", descriptionTask: nil)]
     var presenterVariable:PresentData?
 
     //MARK: Initialization View objects
-    
+    weak var showDescriptionDelegate:ShowDescription?
     var storageDelegate:StorageTasksDelegate?
+    lazy var descriptionShow = DescriptionShowLogic()
     var tasks = [DataFields]()
     let topViewLogo = TopViewLogo()
     let bottomView = BottomView()
@@ -32,15 +31,10 @@ class TasksController:UIViewController, PresentDataFieldsDelegate {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = #colorLiteral(red: 0.1568627451, green: 0.1921568627, blue: 0.2274509804, alpha: 1)
         tableView.separatorStyle = .none
-        tableView.allowsSelection = false
         tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
     
-  
-    
-
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -54,12 +48,14 @@ class TasksController:UIViewController, PresentDataFieldsDelegate {
         
         let viewController = self
         let storage = StorageTasks()
+        viewController.showDescriptionDelegate = descriptionShow
         viewController.storageDelegate = storage
         
         
         tableView.delegate = self
         tableView.dataSource = self
         bottomView.delegate = self
+        
     }
   
     
@@ -90,7 +86,7 @@ class TasksController:UIViewController, PresentDataFieldsDelegate {
 
 
 extension TasksController: UITableViewDelegate, UITableViewDataSource {
-    
+    // MARK: Setup TableView methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -99,12 +95,22 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         cell.delegate = self
         cell.nameTask.text = tasks[indexPath.row].titleTask
+        cell.taskBodyText.text = tasks[indexPath.row].descriptionTask
+        //cell.frame.size.height = CGFloat(tasks[indexPath.row].sizes.height)
+        cell.selectionStyle = .none
         cell.backgroundColor = #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        let cell = tasks[indexPath.row]
+        let height = CGFloat(cell.sizes.totalHeight)
+        return height
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = tasks[indexPath.row]
+        let height = CGFloat(cell.sizes.totalHeight)
+        return height
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -116,31 +122,50 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
             tableView.endUpdates()
         }
     }
-    
-    
   
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CustomCell
+        guard let sizesCell = descriptionShow.showDescription(for: cell) else { return }
+        if !tasks[indexPath.row].isOpen  {
+           
+            tasks[indexPath.row].isOpen = true
+                tableView.beginUpdates()
+                cell.descriptionMain.isHidden = false
+                cell.taskBodyText.isHidden = false
+                self.tasks[indexPath.row].sizes.totalHeight = sizesCell.totalHeight
+                // for correct constraints
+                cell.descriptionMain.frame.size.height = sizesCell.descriptionHeight
+                tableView.endUpdates()
+        } else {
+            tableView.beginUpdates()
+            tasks[indexPath.row].isOpen = false
+            cell.descriptionMain.isHidden = true
+            cell.taskBodyText.isHidden = true
+            tasks[indexPath.row].sizes.totalHeight = ConstantSizes.heightRow
+            tableView.endUpdates()
+        }
+        
+    }
 }
 
 extension TasksController:EditingTaskDelegate {
+    
+    // MARK: Transfer to Edit Screen
     func presentEditingScreen(to cell: CustomCell?) {
         presentEditScreen(cell: cell)
-       
     }
-    
-    
     fileprivate func presentEditScreen(cell:CustomCell?) {
         let editScreenVC:EditScreenController? = EditScreenController()
         if let cell = cell {
             editScreenVC?.editDataField(cell)
+        } else {
+            editScreenVC?.taskVC = self
         }
-        editScreenVC?.taskVC = self
         let navVC = UINavigationController(rootViewController: editScreenVC!)
         present(navVC, animated: true)
     }
-
-   
+    
+    
 }
-
 
 

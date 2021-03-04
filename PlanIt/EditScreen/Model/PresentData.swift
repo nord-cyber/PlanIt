@@ -16,9 +16,9 @@ class PresentData: GetDataFieldsDelegate {
     var taskController:PresentDataFieldsDelegate?
     
     
-    // Method GetFieldsDataDelegate from EditScreen
+    // Method GetFieldsDataDelegate from EditScreen to TasksVC
     func fillModelFields(titleText: String, descriptionText: String?) {
-        self.data = DataFields(titleTask: titleText, descriptionTask: descriptionText)
+        self.data = DataFields(titleTask: titleText, descriptionTask: descriptionText,sizes: CellSizes(totalHeight: 70, descriptionHeight: 0), isOpen: false)
         self.taskController?.presentDataFields(data)
     }
 }

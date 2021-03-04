@@ -13,7 +13,7 @@ import UIKit
 class CustomCell:UITableViewCell, UITextViewDelegate {
     
     weak var delegate:EditingTaskDelegate?
-    
+    fileprivate var isDone:Bool = false
     var mainView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -23,8 +23,19 @@ class CustomCell:UITableViewCell, UITextViewDelegate {
         return view
     }()
   
-    var pointerToDoTask:UIImageView = {
-        let pointer = UIImageView(image: UIImage(named: "notCompleted"))
+    var descriptionMain:UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
+        view.frame = .zero
+        return view
+    }()
+    
+    var pointerToDoTask:UIButton = {
+        let pointer = UIButton()
+        let image = UIImage(named: "notCompleted")
+        pointer.setImage(image, for: .normal)
         pointer.frame = .zero
         pointer.translatesAutoresizingMaskIntoConstraints = false
         return pointer
@@ -38,21 +49,22 @@ class CustomCell:UITableViewCell, UITextViewDelegate {
         return button
     }()
     
-    // initialization textView
-   lazy var taskBodyText:UILabel = {
+    // initialization textView #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
+        var taskBodyText:UILabel = {
         var body = UILabel()
-        body.font = UIFont(name: "Courier", size: 17)
-        body.backgroundColor = #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
+        body.font = UIFont(name: "Courier", size: ConstantSizes.fontSizeDescription)
+        //body.backgroundColor = .red
         body.textColor = .lightGray
+        body.layer.cornerRadius = 20
+        body.numberOfLines = 0
         body.frame = .zero
-        body.isHidden = true
         body.translatesAutoresizingMaskIntoConstraints = false
         return body
     }()
     
     var nameTask:UILabel = {
         let name = UILabel()
-        name.font = UIFont(name: "Courier", size: 20)
+        name.font = UIFont(name: "Courier", size: 18)
         name.backgroundColor = #colorLiteral(red: 0.2, green: 0.2431372549, blue: 0.2862745098, alpha: 1)
         name.textColor = .white
         name.frame = .zero
@@ -64,6 +76,7 @@ class CustomCell:UITableViewCell, UITextViewDelegate {
     override func layoutSubviews() {
         superview?.layoutSubviews()
         self.backgroundColor = .clear
+        pointerToDoTask.addTarget(self, action: #selector(tapChangePointer), for: .touchUpInside)
         editButton.addTarget(self, action: #selector(tapEditingButton), for: .touchUpInside)
         constraintsElementsView()
      
@@ -74,17 +87,20 @@ class CustomCell:UITableViewCell, UITextViewDelegate {
         
         // mainView constraints
         self.addSubview(mainView)
-        mainView.anchor(top: topAnchor, trailing: trailingAnchor, leading: leadingAnchor, bottom: bottomAnchor, padding: UIEdgeInsets(top: 5, left: 5, bottom: -10, right: -5))
+        mainView.anchor(top: topAnchor, trailing: trailingAnchor, leading: leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: 5, left: 5, bottom: -10, right: -5), size: CGSize(width: 0, height: 60))
+        
+        self.addSubview(descriptionMain)
+        descriptionMain.anchor(top: mainView.bottomAnchor, trailing: trailingAnchor, leading: leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: 10, left: 5, bottom: -5, right: -5),size: CGSize(width: 0, height: 0))
         
         
         // pointer about completion tasks
         mainView.addSubview(pointerToDoTask)
-        guard let sizePointImage = pointerToDoTask.image?.size else { return }
+        guard let sizePointImage = pointerToDoTask.imageView?.image?.size else { return }
         pointerToDoTask.anchor(top: mainView.centerYAnchor, trailing: nil, leading: mainView.leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: -(sizePointImage.height / 2), left: 5, bottom: 999, right: 999))
         
         // name text
         mainView.addSubview(nameTask)
-        nameTask.anchor(top: self.topAnchor, trailing: self.trailingAnchor, leading: pointerToDoTask.trailingAnchor, bottom: self.bottomAnchor, padding: UIEdgeInsets(top: 20, left: 10, bottom: -20, right: -10))
+        nameTask.anchor(top: mainView.topAnchor, trailing: mainView.trailingAnchor, leading: pointerToDoTask.trailingAnchor, bottom: mainView.bottomAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: -10, right: -10))
             
          
         
@@ -95,18 +111,30 @@ class CustomCell:UITableViewCell, UITextViewDelegate {
                             left: 999,
                             bottom: 999,
                             right: -15))
+        
+        
+        if descriptionMain.frame.size.height != 0 {
+            descriptionMain.addSubview(taskBodyText)
+            taskBodyText.anchor(top: descriptionMain.topAnchor, trailing: descriptionMain.trailingAnchor, leading: descriptionMain.leadingAnchor, bottom: descriptionMain.bottomAnchor, padding: UIEdgeInsets(top: 5, left: 5, bottom: -5, right: -5))
+        }
+       
     }
     
     
     // for custom select cell 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: true)
-        
     }
 
     // trigger for edit button cell
     @objc func tapEditingButton() {
         delegate?.presentEditingScreen(to: self)
+    }
+    // trigger for pointer
+    @objc func tapChangePointer() {
+        self.isDone = !isDone
+        let image:UIImage? = isDone != true ? UIImage(named: "notCompleted") :  UIImage(named: "Completed")
+        self.pointerToDoTask.setImage(image, for: .normal)
     }
 }
 

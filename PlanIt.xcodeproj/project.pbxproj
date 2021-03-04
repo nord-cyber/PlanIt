@@ -10,12 +10,16 @@
 		09189EEF25DAF6CD00A84EAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189EEE25DAF6CD00A84EAF /* AppDelegate.swift */; };
 		09189EF125DAF6CD00A84EAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189EF025DAF6CD00A84EAF /* SceneDelegate.swift */; };
 		09189EF625DAF6CD00A84EAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09189EF425DAF6CD00A84EAF /* Main.storyboard */; };
-		09189EF825DAF6D000A84EAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09189EF725DAF6D000A84EAF /* Assets.xcassets */; };
 		09189EFB25DAF6D000A84EAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09189EF925DAF6D000A84EAF /* LaunchScreen.storyboard */; };
 		09189F0F25DBCE4D00A84EAF /* TasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F0E25DBCE4D00A84EAF /* TasksController.swift */; };
-		09189F1725DBF30A00A84EAF /* StorageTasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F1625DBF30A00A84EAF /* StorageTasksModel.swift */; };
+		09189F1725DBF30A00A84EAF /* StorageTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F1625DBF30A00A84EAF /* StorageTasks.swift */; };
 		09189F1F25DC0F5A00A84EAF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F1E25DC0F5A00A84EAF /* CustomCell.swift */; };
 		09189F2525DC24B100A84EAF /* TopViewLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189F2425DC24B100A84EAF /* TopViewLogo.swift */; };
+		093412C125EBC95D00D00755 /* CustomNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093412C025EBC95D00D00755 /* CustomNavigationItems.swift */; };
+		093412C525EBCAD300D00755 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093412C425EBCAD300D00755 /* Assets.xcassets */; };
+		093412CD25EE6CB900D00755 /* CalculatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093412CC25EE6CB900D00755 /* CalculatingCell.swift */; };
+		093412D625EE7A1900D00755 /* ConstantSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093412D525EE7A1900D00755 /* ConstantSizes.swift */; };
+		093412DB25EFA8EE00D00755 /* UILabel + lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093412DA25EFA8EE00D00755 /* UILabel + lines.swift */; };
 		0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0960EE2225DDA58B00656093 /* AnchorExtension.swift */; };
 		09AA3BD225E4062D00B0E290 /* TaskProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */; };
 		09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */; };
@@ -24,7 +28,7 @@
 		09AA3BF725E691BD00B0E290 /* DataFieldsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BF625E691BD00B0E290 /* DataFieldsModel.swift */; };
 		09AA3BFA25E6922000B0E290 /* DescriptionTaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BF925E6922000B0E290 /* DescriptionTaskField.swift */; };
 		09AA3C2825EA5D2400B0E290 /* FieldsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3C2725EA5D2400B0E290 /* FieldsProtocols.swift */; };
-		09AA3C2E25EA96EB00B0E290 /* PresentDataMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3C2D25EA96EB00B0E290 /* PresentDataMode.swift */; };
+		09AA3C2E25EA96EB00B0E290 /* PresentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3C2D25EA96EB00B0E290 /* PresentData.swift */; };
 		09C5748E25E161CA0092CC26 /* CenterYTextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5748D25E161CA0092CC26 /* CenterYTextViewExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,13 +37,17 @@
 		09189EEE25DAF6CD00A84EAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09189EF025DAF6CD00A84EAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		09189EF525DAF6CD00A84EAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		09189EF725DAF6D000A84EAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09189EFA25DAF6D000A84EAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09189EFC25DAF6D000A84EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09189F0E25DBCE4D00A84EAF /* TasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksController.swift; sourceTree = "<group>"; };
-		09189F1625DBF30A00A84EAF /* StorageTasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTasksModel.swift; sourceTree = "<group>"; };
+		09189F1625DBF30A00A84EAF /* StorageTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTasks.swift; sourceTree = "<group>"; };
 		09189F1E25DC0F5A00A84EAF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		09189F2425DC24B100A84EAF /* TopViewLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewLogo.swift; sourceTree = "<group>"; };
+		093412C025EBC95D00D00755 /* CustomNavigationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItems.swift; sourceTree = "<group>"; };
+		093412C425EBCAD300D00755 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		093412CC25EE6CB900D00755 /* CalculatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingCell.swift; sourceTree = "<group>"; };
+		093412D525EE7A1900D00755 /* ConstantSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantSizes.swift; sourceTree = "<group>"; };
+		093412DA25EFA8EE00D00755 /* UILabel + lines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + lines.swift"; sourceTree = "<group>"; };
 		0960EE2225DDA58B00656093 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
 		09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProtocols.swift; sourceTree = "<group>"; };
 		09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenController.swift; sourceTree = "<group>"; };
@@ -48,7 +56,7 @@
 		09AA3BF625E691BD00B0E290 /* DataFieldsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFieldsModel.swift; sourceTree = "<group>"; };
 		09AA3BF925E6922000B0E290 /* DescriptionTaskField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTaskField.swift; sourceTree = "<group>"; };
 		09AA3C2725EA5D2400B0E290 /* FieldsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldsProtocols.swift; sourceTree = "<group>"; };
-		09AA3C2D25EA96EB00B0E290 /* PresentDataMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDataMode.swift; sourceTree = "<group>"; };
+		09AA3C2D25EA96EB00B0E290 /* PresentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentData.swift; sourceTree = "<group>"; };
 		09C5748D25E161CA0092CC26 /* CenterYTextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterYTextViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +93,7 @@
 				09189F0325DBB19700A84EAF /* Application  */,
 				09189F0D25DBCE1600A84EAF /* TasksScreen */,
 				09AA3BE025E4FF5F00B0E290 /* EditScreen */,
+				09AA3C3125EABE4B00B0E290 /* Service */,
 				0960EE2125DDA57800656093 /* Extensions */,
 				09189F0425DBB1CD00A84EAF /* Support Files */,
 			);
@@ -104,8 +113,8 @@
 		09189F0425DBB1CD00A84EAF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				093412C425EBCAD300D00755 /* Assets.xcassets */,
 				09189EFC25DAF6D000A84EAF /* Info.plist */,
-				09189EF725DAF6D000A84EAF /* Assets.xcassets */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -138,6 +147,7 @@
 		09189F0D25DBCE1600A84EAF /* TasksScreen */ = {
 			isa = PBXGroup;
 			children = (
+				093412E025EFEF5600D00755 /* Constants */,
 				09AA3BD725E436E700B0E290 /* Protocols */,
 				09189F1425DBCE6400A84EAF /* Model */,
 				09189F1325DBCE5C00A84EAF /* View */,
@@ -167,7 +177,7 @@
 		09189F1425DBCE6400A84EAF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				09189F1625DBF30A00A84EAF /* StorageTasksModel.swift */,
+				09AA3BF625E691BD00B0E290 /* DataFieldsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,8 +194,17 @@
 			isa = PBXGroup;
 			children = (
 				09189F1E25DC0F5A00A84EAF /* CustomCell.swift */,
+				093412CC25EE6CB900D00755 /* CalculatingCell.swift */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		093412E025EFEF5600D00755 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				093412D525EE7A1900D00755 /* ConstantSizes.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		0960EE2125DDA57800656093 /* Extensions */ = {
@@ -193,6 +212,7 @@
 			children = (
 				0960EE2225DDA58B00656093 /* AnchorExtension.swift */,
 				09C5748D25E161CA0092CC26 /* CenterYTextViewExtension.swift */,
+				093412DA25EFA8EE00D00755 /* UILabel + lines.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,8 +239,7 @@
 		09AA3BE125E4FF8400B0E290 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				09AA3BF625E691BD00B0E290 /* DataFieldsModel.swift */,
-				09AA3C2D25EA96EB00B0E290 /* PresentDataMode.swift */,
+				09AA3C2D25EA96EB00B0E290 /* PresentData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +249,7 @@
 			children = (
 				09AA3BF325E68CD500B0E290 /* CustomTextField.swift */,
 				09AA3BF925E6922000B0E290 /* DescriptionTaskField.swift */,
+				093412C025EBC95D00D00755 /* CustomNavigationItems.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +276,22 @@
 				09AA3C2725EA5D2400B0E290 /* FieldsProtocols.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		09AA3C3125EABE4B00B0E290 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				09AA3C3225EABE5E00B0E290 /* StorageService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		09AA3C3225EABE5E00B0E290 /* StorageService */ = {
+			isa = PBXGroup;
+			children = (
+				09189F1625DBF30A00A84EAF /* StorageTasks.swift */,
+			);
+			path = StorageService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09189EFB25DAF6D000A84EAF /* LaunchScreen.storyboard in Resources */,
-				09189EF825DAF6D000A84EAF /* Assets.xcassets in Resources */,
+				093412C525EBCAD300D00755 /* Assets.xcassets in Resources */,
 				09189EF625DAF6CD00A84EAF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,15 +364,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09AA3C2E25EA96EB00B0E290 /* PresentDataMode.swift in Sources */,
+				093412C125EBC95D00D00755 /* CustomNavigationItems.swift in Sources */,
+				09AA3C2E25EA96EB00B0E290 /* PresentData.swift in Sources */,
 				09AA3BFA25E6922000B0E290 /* DescriptionTaskField.swift in Sources */,
 				09AA3BF425E68CD500B0E290 /* CustomTextField.swift in Sources */,
 				09C5748E25E161CA0092CC26 /* CenterYTextViewExtension.swift in Sources */,
+				093412D625EE7A1900D00755 /* ConstantSizes.swift in Sources */,
 				0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */,
 				09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */,
+				093412CD25EE6CB900D00755 /* CalculatingCell.swift in Sources */,
 				09AA3BE925E52C4C00B0E290 /* BottomView.swift in Sources */,
 				09AA3BF725E691BD00B0E290 /* DataFieldsModel.swift in Sources */,
-				09189F1725DBF30A00A84EAF /* StorageTasksModel.swift in Sources */,
+				09189F1725DBF30A00A84EAF /* StorageTasks.swift in Sources */,
+				093412DB25EFA8EE00D00755 /* UILabel + lines.swift in Sources */,
 				09189F2525DC24B100A84EAF /* TopViewLogo.swift in Sources */,
 				09189F1F25DC0F5A00A84EAF /* CustomCell.swift in Sources */,
 				09189EEF25DAF6CD00A84EAF /* AppDelegate.swift in Sources */,

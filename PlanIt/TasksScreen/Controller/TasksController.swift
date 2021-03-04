@@ -125,10 +125,10 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CustomCell
-        guard let sizesCell = descriptionShow.showDescription(for: cell) else { return }
+        guard let sizesCell = showDescriptionDelegate?.showDescription(for: cell) else { return }
         if !tasks[indexPath.row].isOpen  {
-           
-            tasks[indexPath.row].isOpen = true
+            guard cell.taskBodyText.text != ConstantsEdit.placeholderTextView else { return }
+                tasks[indexPath.row].isOpen = true
                 tableView.beginUpdates()
                 cell.descriptionMain.isHidden = false
                 cell.taskBodyText.isHidden = false

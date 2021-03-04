@@ -43,7 +43,6 @@ class EditScreenController:UIViewController, UITextFieldDelegate, UITextViewDele
         let present = PresentData()
         viewController.delegatePresent = present
         present.taskController = taskVC
-        
         view.backgroundColor = #colorLiteral(red: 0.1568627451, green: 0.1921568627, blue: 0.2274509804, alpha: 1)
         view.addSubview(titleTask)
         view.addSubview(descriptionField)
@@ -97,19 +96,15 @@ class EditScreenController:UIViewController, UITextFieldDelegate, UITextViewDele
     //MARK: Methods Description Field
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-       textViewPlaceholderChecker()
+        descriptionField.alpha = 0.9
+        textViewPlaceholderChecker()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
-        
+        descriptionField.alpha = 0.7
     }
     
     fileprivate func textViewPlaceholderChecker() {
-        let alphaPlaceholderDescriptionText = "0.6"
-        let alpha = String(format: "%.1f", descriptionField.alpha)
-        if alpha == alphaPlaceholderDescriptionText {
-            descriptionField.text = ""
-            descriptionField.alpha = 1
-        }
+        descriptionField.text = descriptionField.text != ConstantsEdit.placeholderTextView ? descriptionField.text : ""
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // off keyboard when click on free space screen

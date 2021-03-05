@@ -23,6 +23,7 @@
 		0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0960EE2225DDA58B00656093 /* AnchorExtension.swift */; };
 		0970A45F25F0D4F7006F1A7C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A45E25F0D4F7006F1A7C /* Constants.swift */; };
 		0970A46725F11DEC006F1A7C /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A46625F11DEC006F1A7C /* CoffeeView.swift */; };
+		0970A46C25F26ACF006F1A7C /* dd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A46B25F26ACF006F1A7C /* dd.swift */; };
 		09AA3BD225E4062D00B0E290 /* TaskProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */; };
 		09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */; };
 		09AA3BE925E52C4C00B0E290 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BE825E52C4C00B0E290 /* BottomView.swift */; };
@@ -53,6 +54,7 @@
 		0960EE2225DDA58B00656093 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
 		0970A45E25F0D4F7006F1A7C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0970A46625F11DEC006F1A7C /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
+		0970A46B25F26ACF006F1A7C /* dd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dd.swift; sourceTree = "<group>"; };
 		09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProtocols.swift; sourceTree = "<group>"; };
 		09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenController.swift; sourceTree = "<group>"; };
 		09AA3BE825E52C4C00B0E290 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				09189F0E25DBCE4D00A84EAF /* TasksController.swift */,
+				0970A46B25F26ACF006F1A7C /* dd.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				09AA3BFA25E6922000B0E290 /* DescriptionTaskField.swift in Sources */,
 				09AA3BF425E68CD500B0E290 /* CustomTextField.swift in Sources */,
 				09C5748E25E161CA0092CC26 /* CenterYTextViewExtension.swift in Sources */,
+				0970A46C25F26ACF006F1A7C /* dd.swift in Sources */,
 				093412D625EE7A1900D00755 /* ConstantSizes.swift in Sources */,
 				0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */,
 				09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */,

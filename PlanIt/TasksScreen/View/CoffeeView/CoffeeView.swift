@@ -15,7 +15,7 @@ protocol ReturnBackControllerDelegate: class {
 class CoffeeView:UIView {
     
     weak var delegate:ReturnBackControllerDelegate?
-    let array = ["1","2","3","4","5","6","7","8","9","10"]
+    let array = ["0","1","2","3","4","5","6","7","8","9","10"]
     
     fileprivate let pickerNumber:UIPickerView = {
         let picker = UIPickerView()
@@ -24,13 +24,13 @@ class CoffeeView:UIView {
         return picker
     }()
     
-    fileprivate let cupImageInBar:UIImageView = {
-        let imageView = UIImageView()
-        let image = UIImage(named: "BarCupImage")
-        imageView.image = image
-        imageView.frame = .zero
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    fileprivate let cupButtonInBar:UIButton = {
+        let button = UIButton()
+        let image = UIImage(named: "BarCupImage")?.withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.frame = .zero
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     fileprivate let viewBar:UIView = {
@@ -86,24 +86,35 @@ class CoffeeView:UIView {
         // buttonToBack constraints
         buttonToBack.anchor(top: topView.topAnchor, trailing: nil, leading: topView.leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: sizeTopView.height / 2 - (title.image?.size.height)! / 2, left: 15, bottom: 999, right: 999))
         // viewBar constraints
-        viewBar.anchor(top: nil, trailing: nil, leading: leadingAnchor, bottom: bottomAnchor, padding: UIEdgeInsets(top: 999, left: self.frame.width / 2 - viewBar.frame.width / 2, bottom: -200, right: 999), size: CGSize(width: 230, height: 150))
-        
-        // pickerNumber
-        pickerNumber.anchor(top: viewBar.topAnchor, trailing: viewBar.trailingAnchor, leading: viewBar.leadingAnchor, bottom: viewBar.bottomAnchor, padding: UIEdgeInsets(top: 1, left: viewBar.frame.width + 120, bottom: -1, right: -5))
+      //  viewBar.frame = CGRect(x: mainCoffeeView.frame.width / 2 - 110, y: mainCoffeeView.frame.height / 1.7, width: 220, height: 150)
+            
+        viewBar.anchor(top: mainCoffeeView.centerYAnchor, trailing: nil, leading: mainCoffeeView.leadingAnchor, bottom: nil,
+                       padding: UIEdgeInsets(top: 70,
+                                             left: self.frame.width / 2 - viewBar.frame.width / 2, bottom: 9999,
+                                             right: 999))
+        viewBar.heightAnchor.constraint(equalTo: mainCoffeeView.heightAnchor, multiplier: 1/4).isActive = true
+        viewBar.widthAnchor.constraint(equalTo: mainCoffeeView.widthAnchor, multiplier: 1/2).isActive = true
+ 
         
         //cupInViewBar
-       cupImageInBar.anchor(top: viewBar.topAnchor, trailing: nil, leading: viewBar.leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: viewBar.frame.height / 2 + (cupImageInBar.image?.size.height)! / 2.5, left: 15, bottom: 999, right: 999))
+        cupButtonInBar.anchor(top: viewBar.centerYAnchor, trailing: nil, leading: viewBar.leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: -(cupButtonInBar.imageView?.image?.size.height)! / 1.7, left: 20, bottom: 999, right: 999))
+        
+        // pickerNumber
+        pickerNumber.anchor(top: viewBar.topAnchor, trailing: viewBar.trailingAnchor, leading: cupButtonInBar.leadingAnchor, bottom: viewBar.bottomAnchor, padding: UIEdgeInsets(top: 1, left: (cupButtonInBar.imageView?.image?.size.width)! + 10 , bottom: -1, right: -5))
+        
+       
     }
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let mainViews = [mainCoffeeView, topView,viewBar]
+        let mainViews = [mainCoffeeView, topView]
+        mainCoffeeView.addSubview(viewBar)
         mainViews.forEach { self.addSubview($0) }
         topView.addSubview(title)
         topView.addSubview(buttonToBack)
         viewBar.addSubview(pickerNumber)
-        viewBar.addSubview(cupImageInBar)
+        viewBar.addSubview(cupButtonInBar)
         self.clipsToBounds = true
         self.layer.cornerRadius = 30
         pickerNumber.delegate = self
@@ -116,6 +127,7 @@ class CoffeeView:UIView {
     @objc fileprivate func tapBackButton() {
         delegate?.returnBack()
     }
+    
 }
 
 
@@ -125,7 +137,7 @@ extension CoffeeView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        10
+        array.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

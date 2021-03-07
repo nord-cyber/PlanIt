@@ -7,11 +7,14 @@
 
 import UIKit
 
-
+protocol ShowCoffeeDelegate:class {
+    func showCoffeeControlView()
+}
 
 class BottomView:UIView {
     
     weak var delegate:EditingTaskDelegate?
+    weak var delegateCoffee:ShowCoffeeDelegate?
     
     var addNewTaskButton:UIButton = {
         let button = UIButton()
@@ -53,7 +56,7 @@ class BottomView:UIView {
         
     }
     @objc fileprivate func tapCoffeeButton() {
-        
+        delegateCoffee?.showCoffeeControlView()
     }
     @objc func tapAddNewTask() {
         delegate?.presentEditingScreen(to: nil)

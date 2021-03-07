@@ -10,25 +10,21 @@ import UIKit
 class TasksController:UIViewController, PresentDataFieldsDelegate {
     
     func presentDataFields(_ data: DataFields) {
-        
             tasks.append(data)
             storageDelegate?.saveTasks(tasks: tasks)
             tableView.reloadData()
     }
-    
-   
-    
-
     //MARK: Initialization View objects
     lazy var heightCoffeeControl = tableView.frame.height + bottomView.frame.height
     var presenterVariable:PresentData?
     weak var showDescriptionDelegate:ShowDescription?
     var storageDelegate:StorageTasksDelegate?
     let descriptionShow = DescriptionShowLogic()
+    lazy var coffeeController = CoffeeController()
     var tasks = [DataFields]()
     let topViewLogo = TopViewLogo()
     let bottomView = BottomView()
-    let coffeeView = CoffeeView()
+   // let coffeeView = CoffeeView()
     var tableView:UITableView =  {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,45 +49,40 @@ class TasksController:UIViewController, PresentDataFieldsDelegate {
         let storage = StorageTasks()
         viewController.showDescriptionDelegate = descriptionShow
         viewController.storageDelegate = storage
-        
+      
         
         tableView.delegate = self
         tableView.dataSource = self
         bottomView.delegate = self
         bottomView.delegateCoffee = self
-        coffeeView.delegate = self
-        coffeeView.frame = .zero
+        //coffeeView.delegate = self
+       // coffeeView.frame = .zero
     }
-  
     
     // function that exposes the constraints
     fileprivate func constrainsViews () {
         // add to main view
-        let views = [tableView,topViewLogo, bottomView,coffeeView]
+        let views = [tableView,topViewLogo, bottomView]
         views.forEach { view.addSubview($0)}
         
-        // calculating ratio for correct proportion topViewLogo
-        self.topViewLogo.frame.size = CGSize(width: self.view.frame.width, height: 240)
-        let ratio = topViewLogo.frame.size.height / topViewLogo.frame.size.width
         
+        // нужно считать само изображение а не рамку
+        // calculating ratio for correct proportion topViewLogo
+        
+       
         // constraints elements main view
-        topViewLogo.anchor(top: view.topAnchor, trailing: view.trailingAnchor, leading: view.leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 999, right: 0), size: CGSize(width: view.frame.width, height: view.frame.width * ratio))
+        topViewLogo.anchor(top: view.topAnchor, trailing: view.trailingAnchor, leading: view.leadingAnchor, bottom: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 999, right: 0), size: CGSize(width: view.frame.width, height:0))
+       
+       // topViewLogo.heightAnchor.constraint(lessThanOrEqualToConstant: 230).isActive = true
+        topViewLogo.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 1/4,constant: 17).isActive = true
         
         // tableview constraints
         tableView.anchor(top: topViewLogo.bottomAnchor, trailing: view.trailingAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: -70, right: 0), size: CGSize(width: self.view.frame.width, height: 600))
   
-        
         // bottomView constraint
         bottomView.anchor(top: tableView.bottomAnchor, trailing: view.trailingAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        
-        //coffeeView frame
-        coffeeView.frame = CGRect(x: 0, y: view.frame.maxY, width: view.frame.width, height: 0)
     }
-    
-    
-    
 }
-
 
 extension TasksController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Setup TableView methods
@@ -156,7 +147,7 @@ extension TasksController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TasksController:EditingTaskDelegate {
-    
+
     // MARK: Transfer to Edit Screen
     func presentEditingScreen(to cell: CustomCell?) {
         presentEditScreen(cell: cell)
@@ -171,24 +162,21 @@ extension TasksController:EditingTaskDelegate {
         let navVC = UINavigationController(rootViewController: editScreenVC!)
         present(navVC, animated: true)
     }
-
-    
 }
-
-extension TasksController:ShowCoffeeDelegate, ReturnBackControllerDelegate {
+extension TasksController:ShowCoffeeDelegate {
     func showCoffeeControlView() {
-        animatedCoffeeControl(topViewLogo.frame.maxY, options: .curveEaseIn)
+        coffeeController.modalPresentationStyle = .custom
+        present(coffeeController, animated: true, completion:nil)
     }
     
-    func returnBack() {
-        animatedCoffeeControl(view.frame.maxY, options:.curveEaseInOut)
-    }
-    
+    /*
     fileprivate func animatedCoffeeControl(_ y:CGFloat,options:UIView.AnimationOptions) {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: { [unowned self] in
             self.coffeeView.frame = CGRect(x: 0, y: y, width:UIScreen.main.bounds.width, height: heightCoffeeControl)
         }, completion: nil)
     }
+ 
+ */
 }
 
 

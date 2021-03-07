@@ -10,14 +10,18 @@ import UIKit
 protocol ReturnBackControllerDelegate: class {
     func returnBack()
 }
-  
+protocol  CoffeeSelectedDelegate: class {
+    func tapedCoffeeSelected()
+}
 
 class CoffeeView:UIView {
     
     weak var delegate:ReturnBackControllerDelegate?
+    weak var delegateSelected:CoffeeSelectedDelegate?
     let array = ["0","1","2","3","4","5","6","7","8","9","10"]
+    var sendNumbersPicker:((Int)->())?
     
-    fileprivate let pickerNumber:UIPickerView = {
+     let pickerNumber:UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.frame = .zero
@@ -29,6 +33,7 @@ class CoffeeView:UIView {
         let image = UIImage(named: "BarCupImage")?.withRenderingMode(.alwaysOriginal)
         button.setImage(image, for: .normal)
         button.frame = .zero
+        button.addTarget(self.self, action: #selector(tappedSelectedCoffee), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -109,8 +114,8 @@ class CoffeeView:UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let mainViews = [mainCoffeeView, topView]
-        mainCoffeeView.addSubview(viewBar)
         mainViews.forEach { self.addSubview($0) }
+        mainCoffeeView.addSubview(viewBar)
         topView.addSubview(title)
         topView.addSubview(buttonToBack)
         viewBar.addSubview(pickerNumber)
@@ -118,6 +123,7 @@ class CoffeeView:UIView {
         self.clipsToBounds = true
         self.layer.cornerRadius = 30
         pickerNumber.delegate = self
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
@@ -127,9 +133,20 @@ class CoffeeView:UIView {
     @objc fileprivate func tapBackButton() {
         delegate?.returnBack()
     }
+    @objc fileprivate func tappedSelectedCoffee() {
+
+        UIView.animate(withDuration: 1) {
+            [unowned self] in
+                self.pickerNumber.alpha = 0
+        } completion: { [unowned self] _ in
+            UIView.animate(withDuration: 1) {
+                self.cupButtonInBar.center.x = viewBar.center.x / 2
+            }
+        }
+        delegateSelected?.tapedCoffeeSelected()
+    }
     
 }
-
 
 extension CoffeeView: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -141,7 +158,7 @@ extension CoffeeView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "-"
+        return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -152,4 +169,9 @@ extension CoffeeView: UIPickerViewDataSource, UIPickerViewDelegate {
         
         return NSAttributedString(string: array[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        sendNumbersPicker?(row)
+    }
 }
+
+ 

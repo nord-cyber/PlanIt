@@ -23,7 +23,10 @@
 		0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0960EE2225DDA58B00656093 /* AnchorExtension.swift */; };
 		0970A45F25F0D4F7006F1A7C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A45E25F0D4F7006F1A7C /* Constants.swift */; };
 		0970A46725F11DEC006F1A7C /* CoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A46625F11DEC006F1A7C /* CoffeeView.swift */; };
-		0970A46C25F26ACF006F1A7C /* dd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A46B25F26ACF006F1A7C /* dd.swift */; };
+		0970A47725F28761006F1A7C /* CoffeeCotronller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A47625F28761006F1A7C /* CoffeeCotronller.swift */; };
+		0970A47B25F35BC8006F1A7C /* CupsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A47A25F35BC8006F1A7C /* CupsCollection.swift */; };
+		0970A48025F4F7E2006F1A7C /* CupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A47F25F4F7E2006F1A7C /* CupsModel.swift */; };
+		0970A48325F505B8006F1A7C /* CustomCellCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970A48225F505B8006F1A7C /* CustomCellCV.swift */; };
 		09AA3BD225E4062D00B0E290 /* TaskProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */; };
 		09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */; };
 		09AA3BE925E52C4C00B0E290 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA3BE825E52C4C00B0E290 /* BottomView.swift */; };
@@ -54,7 +57,10 @@
 		0960EE2225DDA58B00656093 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
 		0970A45E25F0D4F7006F1A7C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0970A46625F11DEC006F1A7C /* CoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeView.swift; sourceTree = "<group>"; };
-		0970A46B25F26ACF006F1A7C /* dd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dd.swift; sourceTree = "<group>"; };
+		0970A47625F28761006F1A7C /* CoffeeCotronller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCotronller.swift; sourceTree = "<group>"; };
+		0970A47A25F35BC8006F1A7C /* CupsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupsCollection.swift; sourceTree = "<group>"; };
+		0970A47F25F4F7E2006F1A7C /* CupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupsModel.swift; sourceTree = "<group>"; };
+		0970A48225F505B8006F1A7C /* CustomCellCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellCV.swift; sourceTree = "<group>"; };
 		09AA3BD125E4062D00B0E290 /* TaskProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProtocols.swift; sourceTree = "<group>"; };
 		09AA3BE425E4FFB500B0E290 /* EditScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenController.swift; sourceTree = "<group>"; };
 		09AA3BE825E52C4C00B0E290 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 				09189F0325DBB19700A84EAF /* Application  */,
 				09189F0D25DBCE1600A84EAF /* TasksScreen */,
 				09AA3BE025E4FF5F00B0E290 /* EditScreen */,
+				0970A47225F26C8D006F1A7C /* CoffeeControl */,
 				09AA3C3125EABE4B00B0E290 /* Service */,
 				0960EE2125DDA57800656093 /* Extensions */,
 				09189F0425DBB1CD00A84EAF /* Support Files */,
@@ -166,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				09189F0E25DBCE4D00A84EAF /* TasksController.swift */,
-				0970A46B25F26ACF006F1A7C /* dd.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -174,7 +180,6 @@
 		09189F1325DBCE5C00A84EAF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0970A46525F11DDA006F1A7C /* CoffeeView */,
 				09AA3BE725E52C1D00B0E290 /* BottomView */,
 				09189F2325DC248800A84EAF /* CustomCell */,
 				09189F2225DC246C00A84EAF /* TopViewLogo */,
@@ -239,6 +244,50 @@
 				0970A46625F11DEC006F1A7C /* CoffeeView.swift */,
 			);
 			path = CoffeeView;
+			sourceTree = "<group>";
+		};
+		0970A47225F26C8D006F1A7C /* CoffeeControl */ = {
+			isa = PBXGroup;
+			children = (
+				0970A47525F26CA9006F1A7C /* Model */,
+				0970A47425F26CA4006F1A7C /* View */,
+				0970A47325F26C98006F1A7C /* Controller */,
+			);
+			path = CoffeeControl;
+			sourceTree = "<group>";
+		};
+		0970A47325F26C98006F1A7C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0970A47625F28761006F1A7C /* CoffeeCotronller.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0970A47425F26CA4006F1A7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0970A47925F35B88006F1A7C /* CupsCollectionView */,
+				0970A46525F11DDA006F1A7C /* CoffeeView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0970A47525F26CA9006F1A7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0970A47F25F4F7E2006F1A7C /* CupsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0970A47925F35B88006F1A7C /* CupsCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0970A47A25F35BC8006F1A7C /* CupsCollection.swift */,
+				0970A48225F505B8006F1A7C /* CustomCellCV.swift */,
+			);
+			path = CupsCollectionView;
 			sourceTree = "<group>";
 		};
 		09AA3BD725E436E700B0E290 /* Protocols */ = {
@@ -391,11 +440,14 @@
 			files = (
 				093412C125EBC95D00D00755 /* CustomNavigationItems.swift in Sources */,
 				09AA3C2E25EA96EB00B0E290 /* PresentData.swift in Sources */,
+				0970A48025F4F7E2006F1A7C /* CupsModel.swift in Sources */,
+				0970A47B25F35BC8006F1A7C /* CupsCollection.swift in Sources */,
 				0970A46725F11DEC006F1A7C /* CoffeeView.swift in Sources */,
 				09AA3BFA25E6922000B0E290 /* DescriptionTaskField.swift in Sources */,
 				09AA3BF425E68CD500B0E290 /* CustomTextField.swift in Sources */,
+				0970A48325F505B8006F1A7C /* CustomCellCV.swift in Sources */,
 				09C5748E25E161CA0092CC26 /* CenterYTextViewExtension.swift in Sources */,
-				0970A46C25F26ACF006F1A7C /* dd.swift in Sources */,
+				0970A47725F28761006F1A7C /* CoffeeCotronller.swift in Sources */,
 				093412D625EE7A1900D00755 /* ConstantSizes.swift in Sources */,
 				0960EE2325DDA58B00656093 /* AnchorExtension.swift in Sources */,
 				09AA3BE525E4FFB500B0E290 /* EditScreenController.swift in Sources */,

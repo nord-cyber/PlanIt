@@ -15,7 +15,7 @@ class TopViewLogo:UIView {
     // image logo
     var imageMainTopLogoView:UIImageView = {
         let mainViewImage = UIImageView()
-        mainViewImage.image = UIImage(named: "Top Image Logo")
+        mainViewImage.image = UIImage(named: "Top Image Logo")?.withRenderingMode(.alwaysOriginal)
         mainViewImage.contentMode = .scaleToFill
         mainViewImage.translatesAutoresizingMaskIntoConstraints = false
         return mainViewImage
